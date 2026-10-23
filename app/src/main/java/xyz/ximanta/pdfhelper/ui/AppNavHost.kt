@@ -33,6 +33,18 @@ import xyz.ximanta.pdfhelper.ui.nav.Destinations
 import xyz.ximanta.pdfhelper.ui.screen.AboutScreen
 import xyz.ximanta.pdfhelper.ui.screen.DashboardScreen
 import xyz.ximanta.pdfhelper.ui.screen.LoadingScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.AddContentScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.ImagesToPdfScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.MergeScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.PageNumbersScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.PasswordScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.PdfToImagesScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.RemovePagesScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.ReorderScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.RotateScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.SplitScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.TextToPdfScreen
+import xyz.ximanta.pdfhelper.ui.screen.tools.WatermarkScreen
 
 @Composable
 fun AppNavHost(
@@ -68,25 +80,36 @@ fun AppNavHost(
             AboutScreen(onBack = { navController.popBackStack() })
         }
 
-        // ---- Tool routes (stubbed — each will be replaced by its real
-        //      screen as Files 29+ land; only the composable() body changes,
-        //      the routes here stay) ----
-        toolStub(navController, Destinations.MERGE)
-        toolStub(navController, Destinations.SPLIT)
-        toolStub(navController, Destinations.ROTATE)
-        toolStub(navController, Destinations.REORDER)
-        toolStub(navController, Destinations.REMOVE_PAGES)
-        toolStub(navController, Destinations.IMAGES_TO_PDF)
-        toolStub(navController, Destinations.TEXT_TO_PDF)
-        toolStub(navController, Destinations.PDF_TO_IMAGES)
-        toolStub(navController, Destinations.ADD_CONTENT)
-        toolStub(navController, Destinations.WATERMARK)
-        toolStub(navController, Destinations.PAGE_NUMBERS)
-        toolStub(navController, Destinations.PASSWORD)
+        // ---- Tools (all real, wired) ----
+        toolRoute(navController, Destinations.MERGE)        { back -> MergeScreen(onBack = back) }
+        toolRoute(navController, Destinations.SPLIT)        { back -> SplitScreen(onBack = back) }
+        toolRoute(navController, Destinations.ROTATE)       { back -> RotateScreen(onBack = back) }
+        toolRoute(navController, Destinations.REORDER)      { back -> ReorderScreen(onBack = back) }
+        toolRoute(navController, Destinations.REMOVE_PAGES) { back -> RemovePagesScreen(onBack = back) }
+        toolRoute(navController, Destinations.IMAGES_TO_PDF){ back -> ImagesToPdfScreen(onBack = back) }
+        toolRoute(navController, Destinations.TEXT_TO_PDF)  { back -> TextToPdfScreen(onBack = back) }
+        toolRoute(navController, Destinations.PDF_TO_IMAGES){ back -> PdfToImagesScreen(onBack = back) }
+        toolRoute(navController, Destinations.ADD_CONTENT)  { back -> AddContentScreen(onBack = back) }
+        toolRoute(navController, Destinations.WATERMARK)    { back -> WatermarkScreen(onBack = back) }
+        toolRoute(navController, Destinations.PAGE_NUMBERS) { back -> PageNumbersScreen(onBack = back) }
+        toolRoute(navController, Destinations.PASSWORD)     { back -> PasswordScreen(onBack = back) }
+
+        // ---- Phase 2 placeholder ----
         toolStub(navController, Destinations.EDIT_PDF)
     }
 }
 
+private fun NavGraphBuilder.toolRoute(
+    navController: NavHostController,
+    route: String,
+    content: @Composable (onBack: () -> Unit) -> Unit,
+) {
+    composable(route) {
+        content { navController.popBackStack() }
+    }
+}
+
+/** Kept for Phase 2 tools that are not yet implemented. */
 private fun NavGraphBuilder.toolStub(
     navController: NavHostController,
     route: String,
