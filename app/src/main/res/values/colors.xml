@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ============================================================
+         Brand — trust-blue (light theme primary)
+         ============================================================ -->
+    <color name="brand_blue_50">#EFF6FF</color>
+    <color name="brand_blue_100">#DBEAFE</color>
+    <color name="brand_blue_500">#3B82F6</color>
+    <color name="brand_blue_600">#2563EB</color>  <!-- primary light -->
+    <color name="brand_blue_700">#1D4ED8</color>  <!-- pressed -->
+    <color name="brand_blue_900">#1E3A8A</color>
+
+    <!-- Sky accent — used for secondary chips, links, focus rings -->
+    <color name="accent_sky_400">#38BDF8</color>
+    <color name="accent_sky_500">#0EA5E9</color>
+    <color name="accent_sky_700">#0369A1</color>
+
+    <!-- ============================================================
+         Slate neutrals — surfaces, text, dividers
+         ============================================================ -->
+    <color name="slate_50">#F8FAFC</color>
+    <color name="slate_100">#F1F5F9</color>
+    <color name="slate_200">#E2E8F0</color>
+    <color name="slate_300">#CBD5E1</color>
+    <color name="slate_400">#94A3B8</color>
+    <color name="slate_500">#64748B</color>
+    <color name="slate_600">#475569</color>
+    <color name="slate_700">#334155</color>
+    <color name="slate_800">#1E293B</color>
+    <color name="slate_900">#0F172A</color>
+    <color name="slate_950">#020617</color>
+
+    <!-- ============================================================
+         Semantic — light theme surfaces
+         ============================================================ -->
+    <color name="light_background">@color/slate_50</color>
+    <color name="light_surface">#FFFFFF</color>
+    <color name="light_surface_variant">@color/slate_100</color>
+    <color name="light_on_background">@color/slate_900</color>
+    <color name="light_on_surface_variant">@color/slate_600</color>
+    <color name="light_outline">@color/slate_300</color>
+
+    <!-- ============================================================
+         Semantic — dark theme surfaces
+         ============================================================ -->
+    <color name="dark_background">@color/slate_950</color>
+    <color name="dark_surface">@color/slate_900</color>
+    <color name="dark_surface_variant">@color/slate_800</color>
+    <color name="dark_on_background">@color/slate_200</color>
+    <color name="dark_on_surface_variant">@color/slate_400</color>
+    <color name="dark_outline">@color/slate_700</color>
+
+    <!-- ============================================================
+         Status
+         ============================================================ -->
+    <color name="success">#16A34A</color>
+    <color name="success_container_light">#DCFCE7</color>
+    <color name="success_container_dark">#14532D</color>
+
+    <color name="warning">#D97706</color>
+    <color name="warning_container_light">#FEF3C7</color>
+    <color name="warning_container_dark">#78350F</color>
+
+    <color name="error">#DC2626</color>
+    <color name="error_container_light">#FEE2E2</color>
+    <color name="error_container_dark">#7F1D1D</color>
+
+    <!-- ============================================================
+         On-colors (foreground over a solid brand/status color)
+         ============================================================ -->
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_secondary">#001E30</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="on_success">#FFFFFF</color>
+    <color name="on_warning">#1F1300</color>
+
+    <!-- ============================================================
+         Launcher / splash / window
+         ============================================================ -->
+    <color name="window_background_light">@color/slate_50</color>
+    <color name="window_background_dark">@color/slate_950</color>
+    <color name="launcher_background">@color/brand_blue_600</color>
+    <color name="launcher_foreground">#FFFFFF</color>
+
+</resources>
