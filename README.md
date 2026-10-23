@@ -114,7 +114,7 @@ Issues and pull requests welcome. Please read **[CONTRIBUTING.md](CONTRIBUTING.m
 [![GitHub](https://img.shields.io/badge/GitHub-realximanta-181717?style=flat-square&logo=github)](https://github.com/realximanta)
 [![X](https://img.shields.io/badge/X-realximanta-000000?style=flat-square&logo=x)](https://x.com/realximanta)
 [![Telegram](https://img.shields.io/badge/Telegram-b4nzw-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/b4nzw)
-[![Website](https://img.shields.io/badge/ximanta.xyz-2563EB?style=flat-square&logo=googlechrome&logoColor=white)](https://ximanta.xyz)
+[![Website](https://img.shields.io/badge/ximanta.xyz-2563EB?style=flat-square&logo=googlechrome&logoColor=white)](https://www.ximanta.xyz)
 
 ---
 
