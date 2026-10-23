@@ -72,8 +72,8 @@ jobs:
           git fetch origin main
           git checkout -B main origin/main
 
-          mkdir -p web/data
-          cat > web/data/latest.json <<EOF
+          mkdir -p data
+          cat > data/latest.json <<EOF
           {
             "version": "${GITHUB_REF_NAME}",
             "tag": "${GITHUB_REF_NAME}",
@@ -83,7 +83,7 @@ jobs:
           }
           EOF
 
-          git add web/data/latest.json
+          git add data/latest.json
           if git diff --staged --quiet; then
             echo "No changes to latest.json"
           else
