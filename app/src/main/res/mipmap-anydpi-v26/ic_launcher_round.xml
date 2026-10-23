@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Solid brand-blue backplate -->
+    <background android:drawable="@color/launcher_background" />
+
+    <!-- White document glyph (defined in drawable/ic_launcher_foreground.xml) -->
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+
+    <!-- Monochrome layer for Android 13+ themed icons -->
+    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+
+</adaptive-icon>
