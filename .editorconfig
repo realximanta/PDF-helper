@@ -1,0 +1,128 @@
+# EditorConfig — https://editorconfig.org
+# Keeps formatting consistent across Android Studio, VS Code, and CLI editors.
+# Android Studio respects these for Kotlin; most other IDEs respect the rest.
+
+root = true
+
+# ============================================================
+# Global defaults
+# ============================================================
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# ============================================================
+# Kotlin — official Kotlin style uses 4 spaces, 120 cols
+# ============================================================
+[*.{kt,kts}]
+indent_style = space
+indent_size = 4
+max_line_length = 120
+ij_kotlin_code_style_defaults = KOTLIN_OFFICIAL
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_allow_trailing_comma_on_call_site = true
+ij_kotlin_name_count_to_use_star_import = 2147483647
+ij_kotlin_name_count_to_use_star_import_for_members = 2147483647
+ij_kotlin_packages_to_use_import_on_demand = unset
+
+# ============================================================
+# Java (rare — no Java sources in this repo, but stray generated files
+# should still follow 4-space convention)
+# ============================================================
+[*.java]
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+# ============================================================
+# XML — manifest, resources, layout-free (Compose-only) but XML
+# resources still need consistent formatting
+# ============================================================
+[*.{xml,html,xhtml}]
+indent_style = space
+indent_size = 4
+max_line_length = off
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# ============================================================
+# Gradle (Groovy variant not used, but if added later)
+# ============================================================
+[*.gradle]
+indent_style = space
+indent_size = 4
+
+# ============================================================
+# YAML — GitHub workflows, dependabot
+# 2 spaces is the universal YAML convention
+# ============================================================
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+max_line_length = off
+
+# ============================================================
+# JSON — data/latest.json, package files
+# ============================================================
+[*.json]
+indent_style = space
+indent_size = 2
+max_line_length = off
+
+# ============================================================
+# Markdown — README, CHANGELOG, docs
+# Allow long lines in prose; no auto-wrapping
+# ============================================================
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+indent_style = space
+indent_size = 2
+
+# ============================================================
+# JavaScript / CSS — web/
+# ============================================================
+[*.{js,mjs,cjs}]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+[*.css]
+indent_style = space
+indent_size = 2
+
+# ============================================================
+# Shell scripts — not currently used, but if added
+# ============================================================
+[*.sh]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+switch_case_indent = true
+
+# ============================================================
+# Properties — gradle.properties
+# No trimming (values may intentionally end in whitespace)
+# ============================================================
+[*.properties]
+trim_trailing_whitespace = false
+indent_style = space
+indent_size = 4
+
+# ============================================================
+# ProGuard rules — no enforced indentation (free-form DSL)
+# ============================================================
+[*.pro]
+trim_trailing_whitespace = false
+
+# ============================================================
+# Git internals — never touch
+# ============================================================
+[.git/**]
+indent_style = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
