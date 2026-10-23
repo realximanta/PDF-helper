@@ -1,0 +1,70 @@
+# ============================================================
+# Android / Gradle
+# ============================================================
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+*.log
+*.hprof
+*.orig
+
+# ============================================================
+# App module outputs
+# ============================================================
+/app/build/
+/app/release/
+/app/debug/
+/app/*.apk
+/app/*.aab
+
+# ============================================================
+# Signing material (NEVER commit)
+# ============================================================
+*.jks
+*.keystore
+release.jks
+keystore.properties
+local.properties
+
+# ============================================================
+# Gradle wrapper (intentionally NOT needed — CI uses
+# gradle/actions/setup-gradle@v4; see release.yml)
+# ============================================================
+gradlew
+gradlew.bat
+gradle/wrapper/
+
+# ============================================================
+# IDE / OS
+# ============================================================
+.idea/
+.vscode/
+*.swp
+*~
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# Env / secrets
+# ============================================================
+.env
+.env.*
+!.env.example
+
+# ============================================================
+# Web (data/latest.json IS committed by CI, keep it tracked)
+# ============================================================
+web/node_modules/
+web/.cache/
+*.tmp
