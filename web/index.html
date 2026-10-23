@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Helper — Documentation</title>
+  <meta name="description" content="Free, private, offline PDF tools for Android. Open source. MIT licensed. Runs entirely on-device." />
+  <meta property="og:title" content="PDF Helper — Documentation" />
+  <meta property="og:description" content="Free, private, offline PDF tools for Android. Every operation runs on your device." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pdf-app.ximanta.xyz/" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' rx='16' fill='%23000000'/%3E%3Cpath d='M32,26 L68,26 L82,40 L82,82 L32,82 Z' fill='%23FFFFFF'/%3E%3Cpath d='M68,26 L82,40 L68,40 Z' fill='%23D4D4D4'/%3E%3Crect x='42' y='52' width='30' height='4' fill='%23000000'/%3E%3Crect x='42' y='63' width='30' height='4' fill='%23000000'/%3E%3Crect x='42' y='74' width='18' height='4' fill='%23000000'/%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #0a0a0a;
+      --muted: #6b7280;
+      --subtle: #9ca3af;
+      --border: #e5e7eb;
+      --border-strong: #d1d5db;
+      --code-bg: #f9fafb;
+      --accent: #0a0a0a;
+      --link: #111827;
+      --link-hover: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      font-feature-settings: 'ss01', 'cv11';
+    }
+
+    ::selection { background: #0a0a0a; color: #fff; }
+
+    a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: #d1d5db; transition: color .15s, text-decoration-color .15s; }
+    a:hover { color: var(--link-hover); text-decoration-color: var(--link-hover); }
+
+    h1, h2, h3 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin: 0;
+    }
+
+    h1 { font-size: clamp(2.75rem, 6vw, 4.5rem); line-height: 1.02; letter-spacing: -0.035em; }
+    h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); line-height: 1.15; letter-spacing: -0.025em; }
+    h3 { font-size: 1.35rem; line-height: 1.3; letter-spacing: -0.015em; }
+
+    code, pre {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.875em;
+    }
+
+    code {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: var(--fg);
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      overflow-x: auto;
+      line-height: 1.6;
+      margin: 16px 0;
+    }
+
+    pre code {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      font-size: 13px;
+    }
+
+    /* Layout */
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto; padding: 0 24px;
+      height: 60px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--fg);
+      font-weight: 500; font-size: 14px; letter-spacing: -0.01em;
+    }
+    .nav-brand:hover { color: var(--fg); text-decoration: none; }
+    .nav-brand-mark {
+      width: 24px; height: 24px; border-radius: 6px; background: #0a0a0a;
+      display: grid; place-items: center;
+    }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 13px; transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--fg); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #0a0a0a; color: #fff;
+      padding: 7px 14px; border-radius: 6px;
+      font-size: 13px; font-weight: 500; text-decoration: none;
+      transition: background .15s;
+    }
+    .nav-cta:hover { background: #1f2937; color: #fff; text-decoration: none; }
+    .nav-cta svg { width: 14px; height: 14px; }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 96px 0 72px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-meta {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+    .hero-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; }
+    .hero h1 { margin-bottom: 20px; }
+    .hero .lede {
+      font-size: 17px; color: var(--muted);
+      max-width: 560px; line-height: 1.65;
+      margin: 0 0 32px;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      margin-bottom: 40px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: 8px;
+      font-size: 14px; font-weight: 500;
+      text-decoration: none; transition: all .15s;
+    }
+    .btn-primary {
+      background: #0a0a0a; color: #fff;
+    }
+    .btn-primary:hover { background: #1f2937; color: #fff; text-decoration: none; }
+    .btn-outline {
+      border: 1px solid var(--border-strong); color: var(--fg);
+      background: transparent;
+    }
+    .btn-outline:hover { border-color: #0a0a0a; text-decoration: none; }
+    .btn svg { width: 16px; height: 16px; }
+
+    /* Badges row */
+    .badges {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      padding-top: 24px; border-top: 1px solid var(--border);
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px; color: var(--muted);
+      background: #fafafa;
+      border: 1px solid var(--border);
+      padding: 4px 10px; border-radius: 20px;
+    }
+    .badge strong { color: var(--fg); font-weight: 500; }
+
+    /* Sections */
+    .doc { padding: 64px 0; }
+    section.doc-section { padding-top: 48px; padding-bottom: 48px; border-top: 1px solid var(--border); }
+    section.doc-section:first-of-type { border-top: 0; padding-top: 24px; }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--subtle);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .section-title { margin-bottom: 24px; }
+
+    .prose p { margin: 0 0 16px; color: #1f2937; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose ul, .prose ol { margin: 0 0 16px; padding-left: 20px; color: #1f2937; }
+    .prose li { margin-bottom: 8px; }
+    .prose li:last-child { margin-bottom: 0; }
+
+    /* Table */
+    .table-wrap { overflow-x: auto; margin: 20px 0; }
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: 14px; text-align: left;
+    }
+    th {
+      text-align: left;
+      font-weight: 500;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-strong);
+    }
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      color: #1f2937;
+    }
+    td:first-child { font-weight: 500; color: var(--fg); }
+    tr:last-child td { border-bottom: 0; }
+
+    /* Card grid */
+    .grid-2 { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin: 20px 0; }
+    .card {
+      padding: 20px; border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fafafa;
+    }
+    .card h3 { font-size: 1rem; font-weight: 500; margin-bottom: 6px; font-family: 'Inter', sans-serif; letter-spacing: -0.005em; }
+    .card p { font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.55; }
+
+    /* Code block file label */
+    .code-file {
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--subtle);
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-bottom: 0;
+      border-radius: 8px 8px 0 0;
+      background: #fafafa;
+    }
+    .code-file + pre {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin-top: 0;
+    }
+
+    /* FAQ */
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    details:last-child { border-bottom: 0; }
+    summary {
+      cursor: pointer; list-style: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      font-weight: 500; font-size: 15px; color: var(--fg);
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-family: 'Inter', sans-serif;
+      font-size: 20px; font-weight: 300; color: var(--subtle);
+      transition: transform .2s;
+      line-height: 1;
+    }
+    details[open] summary::after { content: '−'; }
+    details > div { padding-top: 12px; color: #1f2937; font-size: 14.5px; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      background: #fafafa;
+    }
+    .footer-inner {
+      max-width: 720px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between; gap: 24px;
+      font-size: 13px; color: var(--muted);
+    }
+    .footer-links {
+      display: flex; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-links a {
+      color: var(--muted); text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--fg); }
+
+    /* Utilities */
+    .mt-2 { margin-top: 8px; }
+    .mt-4 { margin-top: 16px; }
+    .mt-6 { margin-top: 24px; }
+    .mt-8 { margin-top: 32px; }
+    .hidden { display: none; }
+    .text-mono { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; }
+    .text-muted { color: var(--muted); }
+
+    /* Simple fade on scroll */
+    .reveal { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Navigation
+       ============================================================ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="nav-brand-mark">
+          <svg viewBox="0 0 108 108" width="14" height="14" aria-hidden="true">
+            <path d="M32,26 L68,26 L82,40 L82,82 L32,82 Z" fill="#FFFFFF"/>
+            <path d="M68,26 L82,40 L68,40 Z" fill="#D4D4D4"/>
+          </svg>
+        </span>
+        <span>PDF Helper</span>
+      </a>
+      <div class="nav-links">
+        <a href="#download">Download</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/realximanta/PDF-helper" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <a href="#download" class="nav-cta" aria-label="Download">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Download</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       Hero
+       ============================================================ -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-meta">
+        <span class="dot"></span>
+        <span>Open source · MIT licensed</span>
+      </div>
+      <h1>PDF Helper</h1>
+      <p class="lede">
+        Free, private, offline PDF tools for Android. Every operation runs on your device &mdash; no uploads, no accounts, no tracking. The app doesn't have the internet permission, so it literally cannot phone home.
+      </p>
+
+      <div class="hero-actions">
+        <a id="download-apk" href="https://github.com/realximanta/PDF-helper/releases/latest" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span id="download-label">Download APK</span>
+        </a>
+        <a href="https://github.com/realximanta/PDF-helper" target="_blank" rel="noopener" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          View source
+        </a>
+      </div>
+
+      <div class="badges">
+        <span class="badge"><strong id="badge-version">v1.0.0</strong></span>
+        <span class="badge">min Android 8.0</span>
+        <span class="badge">Kotlin · Compose</span>
+        <span class="badge">0 bytes uploaded</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       Document body
+       ============================================================ -->
+  <main class="doc">
+    <div class="container">
+
+      <!-- ----------------------------------------
+           Overview
+           ---------------------------------------- -->
+      <section class="doc-section reveal">
+        <div class="section-label">01 — Overview</div>
+        <h2 class="section-title">PDF tools that never leave your phone.</h2>
+        <div class="prose">
+          <p>Most free PDF tools online work by uploading your file to a server, processing it, and sending it back. Even when the operator means well, your document has made a round trip through somebody else's disk.</p>
+          <p>PDF Helper removes that entire category of risk. Every operation happens locally, inside an Android app whose manifest has no <code>INTERNET</code> permission. Android will kill the process if any code ever attempts to open a socket. That is not a policy &mdash; it's an enforcement at the OS layer.</p>
+          <p>The app targets Android 8.0 (API 26) and newer, uses the Storage Access Framework for file access (no storage permissions), and is released under the MIT license with fully public source code.</p>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------
+           Download
+           ---------------------------------------- -->
+      <section class="doc-section reveal" id="download">
+        <div class="section-label">02 — Download</div>
+        <h2 class="section-title">Get the latest signed APK.</h2>
+        <div class="prose">
+          <p>Releases ship as signed APKs, built and published automatically by GitHub Actions. There is no Play Store listing &mdash; you download directly, and you can verify the tag-to-binary correspondence in the repo.</p>
+        </div>
+
+        <div class="code-file">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          latest release
+        </div>
+        <pre><code id="release-line">Fetching latest release info&hellip;</code></pre>
+
+        <div class="mt-4" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a id="download-apk-2" href="https://github.com/realximanta/PDF-helper/releases/latest" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download APK
+          </a>
+          <a id="release-notes" href="https://github.com/realximanta/PDF-helper/releases" target="_blank" rel="noopener" class="btn btn-outline">
+            Release notes
+          </a>
+        </div>
+
+        <div class="prose mt-6">
+          <p class="text-muted text-mono">Installing outside the Play Store requires allowing your browser or file manager to install unknown apps. That is normal for any sideloaded APK.</p>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------
+           Features
+           ---------------------------------------- -->
+      <section class="doc-section reveal" id="features">
+        <div class="section-label">03 — Features</div>
+        <h2 class="section-title">Thirteen tools, one app.</h2>
+        <div class="prose">
+          <p>Grouped by what you're trying to do. Every tool is fully offline.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Tool</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Organize</td><td>Merge</td><td>Combine PDFs in any order</td></tr>
+              <tr><td>Organize</td><td>Split</td><td>Extract a range or every page</td></tr>
+              <tr><td>Organize</td><td>Rotate</td><td>Per-page 90°/180°/270°</td></tr>
+              <tr><td>Organize</td><td>Reorder</td><td>Move pages up/down</td></tr>
+              <tr><td>Organize</td><td>Remove pages</td><td>Tick to delete</td></tr>
+              <tr><td>Convert</td><td>Images → PDF</td><td>Auto-compressed to keep size small</td></tr>
+              <tr><td>Convert</td><td>Text/MD → PDF</td><td>Paginated, A4 or Letter</td></tr>
+              <tr><td>Convert</td><td>PDF → Images</td><td>PNG or JPEG, 1x/2x/3x</td></tr>
+              <tr><td>Edit</td><td>Add text &amp; images</td><td>Overlay without touching original</td></tr>
+              <tr><td>Edit</td><td>Watermark</td><td>Text or image, opacity control</td></tr>
+              <tr><td>Edit</td><td>Page numbers</td><td>Any corner, any format</td></tr>
+              <tr><td>Secure</td><td>Password protect</td><td>128-bit standard encryption</td></tr>
+              <tr><td>Secure</td><td>Password unlock</td><td>Remove a password you know</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="prose mt-6">
+          <p><strong>Phase 2.</strong> An advanced editor that lets you edit existing PDF text in its original font, replace images in place, and mix multiple font styles within a single document. This is a genuinely hard problem in the PDF format &mdash; it's on the roadmap and will land as its own release.</p>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------
+           Privacy
+           ---------------------------------------- -->
+      <section class="doc-section reveal">
+        <div class="section-label">04 — Privacy</div>
+        <h2 class="section-title">The permission it doesn't have.</h2>
+        <div class="prose">
+          <p>The privacy guarantee isn't a policy page. It's a line of XML that isn't in the manifest.</p>
+        </div>
+
+        <div class="code-file">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          app/src/main/AndroidManifest.xml
+        </div>
+        <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+    &lt;!--
+        No INTERNET permission on purpose.
+        Every PDF operation runs on-device.
+        Android will crash the process if any code
+        attempts to open a network socket.
+    --&gt;
+
+    &lt;application
+        android:name=".PdfHelperApp"
+        android:allowBackup="false"
+        ...&gt;
+        ...
+    &lt;/application&gt;
+&lt;/manifest&gt;</code></pre>
+
+        <div class="prose mt-6">
+          <p><strong>No analytics.</strong> No Firebase. No Crashlytics. No Sentry. No "anonymous usage statistics."</p>
+          <p><strong>No storage permissions.</strong> File picking and saving go through Android's Storage Access Framework, so the app only ever sees the specific files you hand it &mdash; never the rest of your storage.</p>
+          <p><strong>No backups.</strong> <code>android:allowBackup="false"</code> keeps the app's private data out of Google's cloud backup system.</p>
+          <p>You can read every line of the implementation on <a href="https://github.com/realximanta/PDF-helper" target="_blank" rel="noopener">GitHub</a>.</p>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------
+           Tech stack
+           ---------------------------------------- -->
+      <section class="doc-section reveal">
+        <div class="section-label">05 — Tech stack</div>
+        <h2 class="section-title">What it's built with.</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Language &amp; UI</h3>
+            <p>Kotlin 2.0 · Jetpack Compose · Material 3. Single-activity architecture.</p>
+          </div>
+          <div class="card">
+            <h3>PDF engine</h3>
+            <p>PDFBox-Android for manipulation. Native PdfRenderer for page rasterization.</p>
+          </div>
+          <div class="card">
+            <h3>Build</h3>
+            <p>AGP 8.7 · Gradle 8.11 · JVM 17. Min SDK 26, target SDK 35.</p>
+          </div>
+          <div class="card">
+            <h3>Distribution</h3>
+            <p>GitHub Actions builds and signs releases from <code>v*</code> tags.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------
+           Build & release flow
+           ---------------------------------------- -->
+      <section class="doc-section reveal">
+        <div class="section-label">06 — Build &amp; release</div>
+        <h2 class="section-title">How a release gets made.</h2>
+
+        <div class="prose">
+          <p>Local build (for development):</p>
+        </div>
+
+        <pre><code>gradle assembleRelease</code></pre>
+
+        <div class="prose">
+          <p>No Gradle wrapper is committed &mdash; CI installs Gradle via <code>gradle/actions/setup-gradle</code>.</p>
+          <p>Without <code>KEYSTORE_PATH</code>, <code>KEYSTORE_PASSWORD</code>, <code>KEY_ALIAS</code>, and <code>KEY_PASSWORD</code> environment variables, the release APK is unsigned. That's fine for local testing.</p>
+          <p>Release flow:</p>
+          <ol>
+            <li>Bump <code>versionName</code> in <code>app/build.gradle.kts</code> (e.g. <code>1.0.0</code> → <code>1.1.0</code>).</li>
+            <li>Commit and push to <code>main</code>. <strong>No build runs.</strong></li>
+            <li>Create tag <code>v1.1.0</code> and push it.</li>
+            <li>GitHub Actions verifies tag = <code>versionName</code>, builds the signed APK, publishes a GitHub Release, and updates <code>web/data/latest.json</code> on <code>main</code>.</li>
+            <li>The website picks up the new version on next visit.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------
+           FAQ
+           ---------------------------------------- -->
+      <section class="doc-section reveal" id="faq">
+        <div class="section-label">07 — FAQ</div>
+        <h2 class="section-title">Frequently asked questions.</h2>
+
+        <div class="mt-6">
+          <details>
+            <summary>How is this really free? What's the catch?</summary>
+            <div>There is no catch. The app runs entirely on your device, so there are no server bills to cover. The source is MIT-licensed. There's no advertising because the app has no network permission to load an ad.</div>
+          </details>
+
+          <details>
+            <summary>Why isn't it on the Play Store?</summary>
+            <div>Play Store distribution adds a proprietary signing layer and a 30% cut of any paid features. Shipping signed APKs directly from GitHub keeps the whole pipeline open and auditable &mdash; you can rebuild the exact APK from the tag.</div>
+          </details>
+
+          <details>
+            <summary>Does it work offline?</summary>
+            <div>Permanently. The app has no network permission, so every tool works with airplane mode enabled. If it did need a network, it would fail.</div>
+          </details>
+
+          <details>
+            <summary>Can I edit the text inside an existing PDF?</summary>
+            <div>Phase 1 (current) lets you <em>add</em> new text or images on top of any page. In-place editing of existing text, matching the original font, is Phase 2 &mdash; genuinely hard to do well in the PDF format.</div>
+          </details>
+
+          <details>
+            <summary>What happens if I open a signed PDF?</summary>
+            <div>Any modification &mdash; including removing a password &mdash; saves the document as new bytes, which invalidates the original digital signature. The app warns you before you apply. Keep the source file if you need the original signature intact.</div>
+          </details>
+
+          <details>
+            <summary>Is the source code public?</summary>
+            <div>Yes &mdash; MIT-licensed on <a href="https://github.com/realximanta/PDF-helper" target="_blank" rel="noopener">github.com/realximanta/PDF-helper</a>. Fork it, rebrand it, ship your own version.</div>
+          </details>
+
+          <details>
+            <summary>What data does this website collect?</summary>
+            <div>None. No cookies, no analytics, no fonts beyond what Google Fonts serves over HTTPS, and no external scripts beyond the ones in the HTML source. The page is a static file.</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------
+           License & Author
+           ---------------------------------------- -->
+      <section class="doc-section reveal">
+        <div class="section-label">08 — License &amp; author</div>
+        <h2 class="section-title">MIT licensed. One person.</h2>
+
+        <div class="prose">
+          <p>PDF Helper is released under the <a href="https://github.com/realximanta/PDF-helper/blob/main/LICENSE" target="_blank" rel="noopener">MIT license</a>. Free to use, modify, and redistribute with attribution.</p>
+          <p>Made and maintained by <strong>Himanta Bhuyan</strong> (realximanta).</p>
+        </div>
+
+        <div class="grid-2 mt-6">
+          <a href="https://github.com/realximanta" target="_blank" rel="noopener" class="card" style="text-decoration:none;">
+            <h3>GitHub</h3>
+            <p>@realximanta</p>
+          </a>
+          <a href="https://x.com/realximanta" target="_blank" rel="noopener" class="card" style="text-decoration:none;">
+            <h3>X / Twitter</h3>
+            <p>@realximanta</p>
+          </a>
+          <a href="https://t.me/b4nzw" target="_blank" rel="noopener" class="card" style="text-decoration:none;">
+            <h3>Telegram</h3>
+            <p>@b4nzw</p>
+          </a>
+          <a href="https://ximanta.xyz" target="_blank" rel="noopener" class="card" style="text-decoration:none;">
+            <h3>Website</h3>
+            <p>ximanta.xyz</p>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div>&copy; <span id="year"></span> Himanta Bhuyan · MIT</div>
+      <div class="footer-links">
+        <a href="https://github.com/realximanta/PDF-helper" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/realximanta/PDF-helper/releases" target="_blank" rel="noopener">Releases</a>
+        <a href="https://github.com/realximanta/PDF-helper/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+        <a href="https://github.com/realximanta/PDF-helper/issues" target="_blank" rel="noopener">Issues</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       Scripts
+       ============================================================ -->
+  <script src="js/main.js"></script>
+</body>
+</html>
