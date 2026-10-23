@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    FileProvider whitelist.
+    Only these two folders can ever be exposed via content:// URIs.
+    Everything else in the app sandbox stays private.
+
+    - cache/shared/     → generated PDFs staged for the system share-sheet
+    - files/outputs/    → persistent app-private results (if the user
+                          chooses "save to app" instead of a public folder)
+-->
+<paths>
+
+    <!-- getCacheDir()/shared/ -->
+    <cache-path
+        name="shared_cache"
+        path="shared/" />
+
+    <!-- getFilesDir()/outputs/ -->
+    <files-path
+        name="private_outputs"
+        path="outputs/" />
+
+</paths>
