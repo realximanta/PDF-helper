@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ============================ Brand ============================ -->
+    <string name="app_name">PDF Helper</string>
+    <string name="app_tagline">Free, private, offline PDF tools</string>
+    <string name="app_short_desc">PDF tools that never leave your device</string>
+
+    <!-- ============================ Owner ============================ -->
+    <string name="owner_name">Himanta Bhuyan</string>
+    <string name="owner_handle">realximanta</string>
+    <string name="owner_telegram">b4nzw</string>
+    <string name="owner_github_url" translatable="false">https://github.com/realximanta</string>
+    <string name="owner_x_url" translatable="false">https://x.com/realximanta</string>
+    <string name="owner_telegram_url" translatable="false">https://t.me/b4nzw</string>
+    <string name="owner_site_url" translatable="false">https://ximanta.xyz</string>
+
+    <!-- ============================ Navigation ============================ -->
+    <string name="nav_home">Home</string>
+    <string name="nav_tools">Tools</string>
+    <string name="nav_about">About</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- ============================ Dashboard ============================ -->
+    <string name="dashboard_greeting">What would you like to do?</string>
+    <string name="dashboard_privacy_badge">100%% offline · Nothing uploaded</string>
+    <string name="dashboard_section_organize">Organize</string>
+    <string name="dashboard_section_convert">Convert</string>
+    <string name="dashboard_section_edit">Edit</string>
+    <string name="dashboard_section_secure">Secure</string>
+    <string name="dashboard_section_coming_soon">Coming soon</string>
+
+    <!-- ============================ Tools ============================ -->
+    <!-- Organize -->
+    <string name="tool_merge">Merge PDFs</string>
+    <string name="tool_merge_desc">Combine multiple PDFs into one</string>
+    <string name="tool_split">Split PDF</string>
+    <string name="tool_split_desc">Split by range or into single pages</string>
+    <string name="tool_rotate">Rotate pages</string>
+    <string name="tool_rotate_desc">Rotate selected pages 90°, 180°, 270°</string>
+    <string name="tool_reorder">Reorder pages</string>
+    <string name="tool_reorder_desc">Drag pages into a new order</string>
+    <string name="tool_remove_pages">Remove pages</string>
+    <string name="tool_remove_pages_desc">Delete selected pages from the PDF</string>
+
+    <!-- Convert -->
+    <string name="tool_images_to_pdf">Images to PDF</string>
+    <string name="tool_images_to_pdf_desc">JPG / PNG to PDF with smart compression</string>
+    <string name="tool_text_to_pdf">Text / Markdown to PDF</string>
+    <string name="tool_text_to_pdf_desc">TXT, MD, or plain text → styled PDF</string>
+    <string name="tool_pdf_to_images">PDF to Images</string>
+    <string name="tool_pdf_to_images_desc">Export pages as PNG</string>
+
+    <!-- Edit -->
+    <string name="tool_add_content">Add text &amp; images</string>
+    <string name="tool_add_content_desc">Overlay new text or images on any page</string>
+    <string name="tool_watermark">Watermark</string>
+    <string name="tool_watermark_desc">Add a text or image watermark</string>
+    <string name="tool_page_numbers">Page numbers</string>
+    <string name="tool_page_numbers_desc">Stamp page numbers in any corner</string>
+    <string name="tool_edit_pdf">Advanced PDF editor</string>
+    <string name="tool_edit_pdf_desc">Edit existing text, images, fonts</string>
+
+    <!-- Secure -->
+    <string name="tool_password">Password protect</string>
+    <string name="tool_password_desc">Encrypt or remove a PDF password</string>
+
+    <!-- Coming soon -->
+    <string name="coming_soon">Coming soon</string>
+    <string name="tool_edit_pdf_coming">Advanced PDF editor — Phase 2</string>
+
+    <!-- ============================ Common actions ============================ -->
+    <string name="action_open">Open</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_apply">Apply</string>
+    <string name="action_share">Share</string>
+    <string name="action_done">Done</string>
+    <string name="action_back">Back</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_choose_file">Choose file</string>
+    <string name="action_choose_files">Choose files</string>
+    <string name="action_pick_password">Enter password</string>
+    <string name="action_add_more">Add more</string>
+    <string name="action_remove">Remove</string>
+
+    <!-- ============================ State / feedback ============================ -->
+    <string name="state_loading">Loading…</string>
+    <string name="state_processing">Processing…</string>
+    <string name="state_saving">Saving…</string>
+    <string name="state_done">Done</string>
+    <string name="state_error">Something went wrong</string>
+    <string name="state_no_file_selected">No file selected</string>
+    <string name="state_password_required">This PDF is password-protected</string>
+    <string name="state_password_wrong">Wrong password — try again</string>
+    <string name="state_empty_tool">Choose a file to continue</string>
+
+    <!-- ============================ Errors ============================ -->
+    <string name="error_generic">Operation failed. Please try another file.</string>
+    <string name="error_corrupt_pdf">The PDF is damaged or unreadable.</string>
+    <string name="error_encrypted_pdf">This PDF is encrypted. Provide the password first.</string>
+    <string name="error_unsupported">This file type is not supported.</string>
+    <string name="error_write_failed">Could not save the file. Pick another location.</string>
+
+    <!-- ============================ About ============================ -->
+    <string name="about_version_label">Version</string>
+    <string name="about_license_label">License</string>
+    <string name="about_license_value">MIT</string>
+    <string name="about_made_by">Made by</string>
+    <string name="about_source">Source code</string>
+    <string name="about_privacy_title">Privacy</string>
+    <string name="about_privacy_body">Every PDF operation runs on your device. The app has no internet permission, so no file, no telemetry, and no usage data can leave your phone.</string>
+
+    <!-- ============================ Content descriptions (a11y) ============================ -->
+    <string name="cd_app_icon">PDF Helper icon</string>
+    <string name="cd_tool_icon">Tool icon</string>
+    <string name="cd_back_button">Back</string>
+    <string name="cd_share_button">Share result</string>
+    <string name="cd_file_picked">File selected</string>
+
+</resources>
