@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        Base application theme (light).
+        Dark-mode override lives in values-night/themes.xml (next file).
+        Do NOT add Material Components attributes here — the app is
+        Compose-only and we did not add the XML Material library.
+    -->
+    <style name="Theme.PdfHelper" parent="android:Theme.Material.Light.NoActionBar">
+
+        <!-- Window background: matches Compose surface; kills cold-start flash -->
+        <item name="android:windowBackground">@color/window_background_light</item>
+
+        <!-- Edge-to-edge: Compose draws behind system bars -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- Dark icons on light background -->
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+
+        <!-- Disable the platform-enforced scrim behind system bars -->
+        <item name="android:enforceStatusBarContrast" tools:targetApi="29">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="29">false</item>
+
+        <!-- Draw into the display cutout area (edge-to-edge on notched phones) -->
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="28">shortEdges</item>
+
+    </style>
+
+</resources>
