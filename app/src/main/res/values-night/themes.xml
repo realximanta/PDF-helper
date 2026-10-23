@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        Dark-mode override for Theme.PdfHelper.
+        Applied automatically when the OS is in dark mode.
+        Same name → manifest does not need to change.
+    -->
+    <style name="Theme.PdfHelper" parent="android:Theme.Material.NoActionBar">
+
+        <!-- Window background: matches Compose dark surface -->
+        <item name="android:windowBackground">@color/window_background_dark</item>
+
+        <!-- Edge-to-edge -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- Light icons on a dark background -->
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+
+        <!-- Disable contrast scrims behind transparent bars -->
+        <item name="android:enforceStatusBarContrast" tools:targetApi="29">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="29">false</item>
+
+        <!-- Draw into the display cutout (shortEdges) -->
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="28">shortEdges</item>
+
+    </style>
+
+</resources>
