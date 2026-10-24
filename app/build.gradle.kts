@@ -15,7 +15,7 @@ android {
         minSdk = 26
         targetSdk = 35
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.3"
     }
 
     signingConfigs {
@@ -40,10 +40,8 @@ android {
             )
             val path = System.getenv("KEYSTORE_PATH")
             if (!path.isNullOrBlank()) {
-                // Use the real release key if secrets are present
                 signingConfig = signingConfigs.getByName("release")
             } else {
-                // FALLBACK: Use the debug key so it's still installable
                 signingConfig = signingConfigs.getByName("debug")
             }
         }
