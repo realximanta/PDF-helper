@@ -70,7 +70,6 @@ import xyz.ximanta.pdfhelper.ui.components.ResultBanner
 import xyz.ximanta.pdfhelper.ui.components.SecondaryActionButton
 import xyz.ximanta.pdfhelper.ui.components.ToolScaffold
 import kotlin.math.atan2
-import kotlin.math.sqrt
 
 enum class WatermarkKind { TEXT, IMAGE }
 
@@ -189,20 +188,17 @@ class WatermarkViewModel(app: Application) : AndroidViewModel(app) {
                         val text = sanitize(snap.text)
                         val fontSize = snap.fontSize.toFloat()
                         val textWidth = safeWidth(font, fontSize, text)
-                        val angle = atan2(ph.toDouble(), pw.toDouble())
-                        val startX = ((pw - textWidth * 0.6f * 1.6f) / 2f).toDouble()
-                        val startY = (ph / 2f - fontSize / 2f).toDouble()
+                        // Matrix.getRotateInstance in PDFBox-Android expects Float args.
+                        val angle: Float = atan2(ph.toDouble(), pw.toDouble()).toFloat()
+                        val startX: Float = (pw - textWidth * 0.6f * 1.6f) / 2f
+                        val startY: Float = ph / 2f - fontSize / 2f
 
                         cs.beginText()
                         cs.setFont(font, fontSize)
                         cs.setNonStrokingColor(Color.GRAY)
-                        cs.setTextMatrix(
-                            Matrix.getRotateInstance(angle, startX, startY)
-                        )
+                        cs.setTextMatrix(Matrix.getRotateInstance(angle, startX, startY))
                         cs.showText(text)
                         cs.endText()
-                        @Suppress("UNUSED_EXPRESSION")
-                        sqrt((pw * pw + ph * ph).toDouble()).toFloat()
                     } else if (imgBytes != null) {
                         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
                         BitmapFactory.decodeByteArray(imgBytes, 0, imgBytes.size, bounds)
