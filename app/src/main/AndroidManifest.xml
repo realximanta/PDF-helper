@@ -3,12 +3,10 @@
 
     <!--
         PRIVACY BY DESIGN
-        -----------------
         No INTERNET permission on purpose. Every PDF operation runs on-device.
         Adding android.permission.INTERNET later would break the privacy
         guarantee this app is built on. Don't.
-
-        No storage permissions either — SAF (ActivityResultContracts) is used
+        No storage permissions either - SAF (ActivityResultContracts) is used
         for all file I/O, so scoped storage rules are respected on API 26+.
     -->
 
@@ -34,7 +32,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Shares generated PDFs to other apps via system share-sheet. -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
