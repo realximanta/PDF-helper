@@ -38,14 +38,6 @@ keystore.properties
 local.properties
 
 # ============================================================
-# Gradle wrapper (intentionally NOT needed — CI uses
-# gradle/actions/setup-gradle@v4; see release.yml)
-# ============================================================
-gradlew
-gradlew.bat
-gradle/wrapper/
-
-# ============================================================
 # IDE / OS
 # ============================================================
 .idea/
