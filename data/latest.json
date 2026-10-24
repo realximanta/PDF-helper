@@ -1,7 +1,7 @@
 {
-  "version": "v1.0.0",
-  "tag": "v1.0.0",
-  "apk_url": "https://github.com/realximanta/PDF-helper/releases/latest",
-  "published_at": "",
-  "release_notes_url": "https://github.com/realximanta/PDF-helper/releases"
+  "version": "v1.1.1",
+  "tag": "v1.1.1",
+  "apk_url": "https://github.com/realximanta/PDF-helper/releases/download/v1.1.1/pdf-helper-v1.1.1.apk",
+  "published_at": "2026-10-24T09:47:10Z",
+  "release_notes_url": "https://github.com/realximanta/PDF-helper/releases/tag/v1.1.1"
 }
