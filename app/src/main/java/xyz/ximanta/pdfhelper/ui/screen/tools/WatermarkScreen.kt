@@ -191,19 +191,19 @@ class WatermarkViewModel(app: Application) : AndroidViewModel(app) {
                         val fontSize = snap.fontSize.toFloat()
                         val textWidth = safeWidth(font, fontSize, text)
 
-                        // Full rotate-matrix overload: (theta, cos, sin, tx, ty)
+                        // PDFBox 2.0.x has no 5-arg getRotateInstance.
+                        // Build the matrix manually: [cos sin -sin cos tx ty].
                         val angle: Double = atan2(ph.toDouble(), pw.toDouble())
                         val cosA: Float = cos(angle).toFloat()
                         val sinA: Float = sin(angle).toFloat()
                         val tx: Float = (pw - textWidth * 0.6f * 1.6f) / 2f
                         val ty: Float = ph / 2f - fontSize / 2f
+                        val matrix = Matrix(cosA, sinA, -sinA, cosA, tx, ty)
 
                         cs.beginText()
                         cs.setFont(font, fontSize)
                         cs.setNonStrokingColor(Color.GRAY)
-                        cs.setTextMatrix(
-                            Matrix.getRotateInstance(angle, cosA, sinA, tx, ty)
-                        )
+                        cs.setTextMatrix(matrix)
                         cs.showText(text)
                         cs.endText()
                     } else if (imgBytes != null) {
