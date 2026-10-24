@@ -189,9 +189,9 @@ class WatermarkViewModel(app: Application) : AndroidViewModel(app) {
                         val text = sanitize(snap.text)
                         val fontSize = snap.fontSize.toFloat()
                         val textWidth = safeWidth(font, fontSize, text)
-                        val angle = atan2(ph.toDouble(), pw.toDouble()).toFloat()
-                        val startX = (pw - textWidth * 0.6f * 1.6f) / 2f
-                        val startY = ph / 2f - fontSize / 2f
+                        val angle = atan2(ph.toDouble(), pw.toDouble())
+                        val startX = ((pw - textWidth * 0.6f * 1.6f) / 2f).toDouble()
+                        val startY = (ph / 2f - fontSize / 2f).toDouble()
 
                         cs.beginText()
                         cs.setFont(font, fontSize)
