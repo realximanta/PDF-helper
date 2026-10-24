@@ -70,6 +70,8 @@ import xyz.ximanta.pdfhelper.ui.components.ResultBanner
 import xyz.ximanta.pdfhelper.ui.components.SecondaryActionButton
 import xyz.ximanta.pdfhelper.ui.components.ToolScaffold
 import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.sin
 
 enum class WatermarkKind { TEXT, IMAGE }
 
@@ -188,15 +190,20 @@ class WatermarkViewModel(app: Application) : AndroidViewModel(app) {
                         val text = sanitize(snap.text)
                         val fontSize = snap.fontSize.toFloat()
                         val textWidth = safeWidth(font, fontSize, text)
-                        // Matrix.getRotateInstance in PDFBox-Android expects Float args.
-                        val angle: Float = atan2(ph.toDouble(), pw.toDouble()).toFloat()
-                        val startX: Float = (pw - textWidth * 0.6f * 1.6f) / 2f
-                        val startY: Float = ph / 2f - fontSize / 2f
+
+                        // Full rotate-matrix overload: (theta, cos, sin, tx, ty)
+                        val angle: Double = atan2(ph.toDouble(), pw.toDouble())
+                        val cosA: Float = cos(angle).toFloat()
+                        val sinA: Float = sin(angle).toFloat()
+                        val tx: Float = (pw - textWidth * 0.6f * 1.6f) / 2f
+                        val ty: Float = ph / 2f - fontSize / 2f
 
                         cs.beginText()
                         cs.setFont(font, fontSize)
                         cs.setNonStrokingColor(Color.GRAY)
-                        cs.setTextMatrix(Matrix.getRotateInstance(angle, startX, startY))
+                        cs.setTextMatrix(
+                            Matrix.getRotateInstance(angle, cosA, sinA, tx, ty)
+                        )
                         cs.showText(text)
                         cs.endText()
                     } else if (imgBytes != null) {
