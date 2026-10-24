@@ -81,7 +81,7 @@ data class WatermarkUiState(
     val kind: WatermarkKind = WatermarkKind.TEXT,
     val text: String = "CONFIDENTIAL",
     val fontSize: Int = 60,
-    val opacityPercent: Int = 25,           // 5..90
+    val opacityPercent: Int = 25,
     val imageUri: Uri? = null,
     val imageName: String = "",
     val isWorking: Boolean = false,
@@ -189,28 +189,26 @@ class WatermarkViewModel(app: Application) : AndroidViewModel(app) {
                         val text = sanitize(snap.text)
                         val fontSize = snap.fontSize.toFloat()
                         val textWidth = safeWidth(font, fontSize, text)
-                        val diagonal = sqrt((pw * pw + ph * ph).toDouble()).toFloat()
                         val angle = atan2(ph.toDouble(), pw.toDouble()).toFloat()
+                        val startX = (pw - textWidth * 0.6f * 1.6f) / 2f
+                        val startY = ph / 2f - fontSize / 2f
 
                         cs.beginText()
                         cs.setFont(font, fontSize)
                         cs.setNonStrokingColor(Color.GRAY)
-                        val startX = (pw - textWidth * 0.6f * 1.6f) / 2f
-                        val startY = ph / 2f - fontSize / 2f
                         cs.setTextMatrix(
-                            Matrix.getRotateInstance(angle.toDouble(), startX.toDouble(), startY.toDouble())
+                            Matrix.getRotateInstance(angle, startX, startY)
                         )
                         cs.showText(text)
                         cs.endText()
-                        // reference to avoid unused warning
-                        @Suppress("UNUSED_EXPRESSION") diagonal
+                        @Suppress("UNUSED_EXPRESSION")
+                        sqrt((pw * pw + ph * ph).toDouble()).toFloat()
                     } else if (imgBytes != null) {
                         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
                         BitmapFactory.decodeByteArray(imgBytes, 0, imgBytes.size, bounds)
                         val iw = bounds.outWidth.toFloat()
                         val ih = bounds.outHeight.toFloat()
                         val xobj = JPEGFactory.createFromByteArray(doc, imgBytes)
-                        // Fit to 55% of page diagonal, centered
                         val targetW = pw * 0.55f
                         val targetH = targetW * (ih / iw)
                         val x = (pw - targetW) / 2f
